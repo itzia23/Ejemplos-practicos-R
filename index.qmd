@@ -1,0 +1,42 @@
+---
+title: "Ejemplos practicos R"
+---
+
+*Tidyr* es un paquete de R que permite ordenar datos *"sucios"* para obtener objetos de datos en R, en este caso se utilizará para combinar columnas
+
+```{r}
+library(tidyr)
+```
+
+Lectura de datos de archivos xlsx, usando la Liberia readxl
+
+El archivo xlsx contiene un marco de datos con las columnas a combinar y es almacenada en la variable datos
+
+```{r}
+library(readxl)
+datos <- read_excel("~/datos.xlsx")
+
+```
+
+La función `gather` toma múltiples columnas y las une en pares clave-valor. Apartir de "datos" se modifica, "años" en el nombre de la nueva columna y "ventas" es para almacenar los valores originales
+
+```{r}
+library(tidyr)
+informe <- datos %>% gather(años, ventas, "2009":"2012") 
+informe
+```
+
+```{r}
+
+library(ggplot2)
+
+```
+
+```{r}
+ggplot(
+ informe,
+  aes(x = informe$Cliente, y = informe$ventas, color = informe$años)) + 
+  geom_point() +
+  labs(x = "cliente", y = "ventas") +
+  theme(legend.position = "bottom")
+```

@@ -1,0 +1,9 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Ejemplos practicos R",
+    "section": "",
+    "text": "Tidyr es un paquete de R que permite ordenar datos “sucios” para obtener objetos de datos en R, en este caso se utilizará para combinar columnas\n\nlibrary(tidyr)\n\nLectura de datos de archivos xlsx, usando la Liberia readxl\nEl archivo xlsx contiene un marco de datos con las columnas a combinar y es almacenada en la variable datos\n\nlibrary(readxl)\ndatos &lt;- read_excel(\"~/datos.xlsx\")\n\nLa función gather toma múltiples columnas y las une en pares clave-valor. Apartir de “datos” se modifica, “años” en el nombre de la nueva columna y “ventas” es para almacenar los valores originales\n\nlibrary(tidyr)\ninforme &lt;- datos %&gt;% gather(años, ventas, \"2009\":\"2012\") \ninforme\n\n# A tibble: 12 × 3\n   Cliente años  ventas\n   &lt;chr&gt;   &lt;chr&gt;  &lt;dbl&gt;\n 1 María   2009    1289\n 2 Juan    2009     900\n 3 Mauro   2009     750\n 4 María   2010    1400\n 5 Juan    2010    1175\n 6 Mauro   2010     800\n 7 María   2011    1450\n 8 Juan    2011    1175\n 9 Mauro   2011     810\n10 María   2012    1500\n11 Juan    2012    1250\n12 Mauro   2012     815\n\n\n\nlibrary(ggplot2)\n\n\nggplot(\n informe,\n  aes(x = informe$Cliente, y = informe$ventas, color = informe$años)) + \n  geom_point() +\n  labs(x = \"cliente\", y = \"ventas\") +\n  theme(legend.position = \"bottom\")\n\nWarning: Use of `informe$Cliente` is discouraged.\nℹ Use `Cliente` instead.\n\n\nWarning: Use of `informe$ventas` is discouraged.\nℹ Use `ventas` instead.\n\n\nWarning: Use of `informe$años` is discouraged.\nℹ Use `años` instead."
+  }
+]
