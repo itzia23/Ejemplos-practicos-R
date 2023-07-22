@@ -1,6 +1,58 @@
 ---
-title: "Ejemplos practicos R"
+title: ""
 ---
+
+## Ejemplo 4
+
+Se cargan los paquetes en el ordenador, y luego se le pide a R que los cargue para usarlos. Hacemos esto mediante el comando library(librería).
+
+library(tokenizers) utilizando esta funciones proporcionadas por la librería "tokenizers", se puede tokenizar el texto en palabras, caracteres u otros elementos.
+
+library(tidyverse) es una colección de paquetes R diseñados para la manipulación, exploración y visualización de datos.
+
+```{r,message=FALSE}
+library(tidyverse)
+library(tokenizers)
+
+```
+
+Segmentación de palabrassegmentación-de-palabras en esta sección vamos a trabajar con un único párrafo. Este ejemplo pertenece al comienzo del último discurso sobre el Estado de la Unión de Barack Obama en 2016.
+
+```{r}
+texto <- paste("También entiendo que como es temporada de elecciones, las expectativas para lo que lograremos este año son bajas. Aún así, señor Presidente de la Cámara de Representantes, aprecio el enfoque constructivo que usted y los otros líderes adoptaron a finales del año pasado para aprobar un presupuesto, y hacer permanentes los recortes de impuestos para las familias trabajadoras. Así que espero que este año podamos trabajar juntos en prioridades bipartidistas como la reforma de la justicia penal y ayudar a la gente que está luchando contra la adicción a fármacos de prescripción. Tal vez podamos sorprender de nuevo a los cínicos.")
+```
+
+Para procesamiento del texto vamos a usar la función tokenize_words (segmentar palabras) del paquete tokenizers para dividir el texto en palabras individuales.
+
+Imprimir los resultados en la ventana de la consola de R
+
+```{r}
+palabras <- tokenize_words(texto)
+
+palabras
+```
+
+función length (longitud) para determinar cuantas palabras hay en este fragmento de texto
+
+```{r}
+length(palabras[[1]])
+```
+
+Es posible calcular cuántas veces se utilizó cada palabra en el texto. Para hacer esto, primero aplicamos la función table(tabla) a las palabras en el primer (y aquí, único) documento y después separamos los nombres y los valores de la tabla en un único objeto llamado marco de datos (data frame).
+
+```{r}
+tabla <- table(palabras[[1]])
+tabla <- data_frame(palabra = names(tabla), recuento = as.numeric(tabla))
+tabla
+```
+
+Ordenar datos usando la función arrange(organizar). Esta función toma el conjunto de datos sobre el que trabajar, aquí tabla, y después el nombre de la columna que toma como referencia para ordenarlo. La función desc en el segundo argumento indica que queremos clasificar en orden descendiente.
+
+```{r}
+arrange(tabla, desc(recuento))
+```
+
+## Ejemplos 3 R
 
 *Tidyr* es un paquete de R que permite ordenar datos *"sucios"* para obtener objetos de datos en R, en este caso se utilizará para combinar columnas
 
@@ -39,4 +91,46 @@ ggplot(
   geom_point() +
   labs(x = "cliente", y = "ventas") +
   theme(legend.position = "bottom")
+```
+
+## Ejemplo 2
+
+1.  Cargar el paquete dplyr y DT:
+
+```{r pressure, message=FALSE}
+library(dplyr)
+library(DT)
+```
+
+2.  Utilizar la función **`filter()`** para filtrar el dataset de iris y seleccionar solo las filas que cumplan con ciertas condiciones. Por ejemplo, seleccionar las filas donde la longitud del sépalo sea mayor a 5:
+
+```{r}
+iris_filtrado <- iris %>% filter(Sepal.Length > 5)
+```
+
+```{r}
+iris_filtrado <- head(iris_filtrado, 30)
+iris_filtrado[1] %>% datatable
+```
+
+3.  Utilizar la función **`select()`** para seleccionar solo las columnas deseadas del dataset. Por ejemplo, seleccionar las columnas de longitud del sépalo y ancho del pétalo:
+
+```{r}
+iris_seleccionado <- iris_filtrado %>% select(Sepal.Length, Petal.Width)
+```
+
+4.  Utilizar la función **`mutate()`** para crear una nueva columna en el dataset basada en cálculos o transformaciones de las columnas existentes. Por ejemplo, crear una columna que calcule el producto de la longitud del sépalo y el ancho del pétalo:
+
+```{r}
+iris_transformado <- iris_seleccionado %>% mutate(Nueva_Columna = Sepal.Length * Petal.Width)
+```
+
+5.  Utilizar la función **`arrange()`** para ordenar el dataset en base a una columna específica. Por ejemplo, ordenar el dataset por la longitud del sépalo de forma descendente:
+
+```{r}
+iris_ordenado <- iris_transformado %>% arrange(desc(Sepal.Length))
+```
+
+```{r}
+iris_ordenado[1] %>% datatable
 ```
