@@ -1,0 +1,83 @@
+---
+title: "ejemplo hiperlink"
+output: html_document
+date: "2023-07-31"
+---
+
+```{r}
+library(DT)
+library(dplyr)
+library(tidyr)
+library(readxl)
+```
+La librería readxl se utiliza para leer archivos de Excel en R.
+```{r}
+datos<- read_excel("C:/Users/itzi2/Downloads/dp-gallery-link.xlsx")
+datos
+```
+La función select() de la librería dplyr se utiliza para seleccionar columnas específicas de un data frame. En este caso se selecciona de la tabla datos la columna area
+```{r}
+datos_filtrados <- select(datos,Area)
+datos_filtrados
+```
+La función select() de la librería dplyr se utiliza para seleccionar columnas específicas de un data frame. En el código, se utiliza select() para seleccionar la columna "Area" del data frame "datos"
+```{r}
+enlace <- select(datos, Category,Link)
+enlace
+```
+
+La primera línea carga las librerías purrr y dplyr. 
+La segunda línea crea una lista vacía llamada "vinculo". 
+La tercera línea utiliza la función map2() de purrr para iterar sobre los valores de la columna "Link" del data frame "enlace" y los índices correspondientes. 
+Dentro de la función map2(), se utiliza la función paste0() para concatenar el valor de la columna "Link" con el texto de la columna "Category" en un formato de hipervínculo HTML. La cuarta línea utiliza do.call() y rbind() para combinar los elementos de la lista en un data frame. 
+La quinta línea utiliza data_frame() de dplyr para convertir el resultado en un data frame con una columna llamada "Category".
+```{r}
+library(purrr)
+vinculo<-list()
+vinculo<- map2(enlace$Link,seq_along(enlace$Link),function(Link,i){
+  combinacion <- paste0("<a href='",Link,"' >",enlace$Category[[i]],"</a>")
+})
+vinculo<- vinculo %>% do.call(rbind, .)%>% data_frame(Category=.)
+```
+Función cbind() para combinar dos objetos: datos_filtrados y vinculo.
+```{r}
+resultado<-cbind(datos_filtrados, vinculo)
+```
+Visualización del resultado en una tabla interactiva utilizando la función datatable() de la librería DT
+```{r}
+resultado %>% datatable(
+  escape = FALSE, 
+  rownames = FALSE
+)
+```
+
+##```{r}
+kbl(resultado) %>%
+  kable_classic("hover")
+```
+
+##```{r}
+library(kableExtra)
+resultado %>%
+  kbl() %>%
+  kable_paper("hover", 
+              full_width = F)
+```
+La extensión RowGroup para DataTables proporciona una función de agrupación de filas fácil de usar para DataTables. Los ejemplos que se muestran aquí demuestran cómo se puede usar, configurar y diseñar.
+
+resultado[order(resultado$Area), ]: Esto ordena el objeto resultado por la columna "Area" en orden ascendente.
+escape = FALSE: Esto indica que no se deben escapar las entidades HTML en la tabla.
+extensions = "RowGroup": Esto carga la extensión "RowGroup" de DataTables, que permite agrupar filas en la tabla.
+options = list(rowGroup = list(dataSrc = 0)): Esto configura la opción rowGroup para agrupar las filas por la primera columna.
+rownames = FALSE: Esto indica que no se deben mostrar los nombres de las filas en la tabla.
+```{r}
+datatable(
+  resultado[order(resultado$Area), ],
+  escape = FALSE, 
+  extensions = "RowGroup", 
+  options = list(
+    rowGroup = list(dataSrc = 0)
+  ),
+  rownames = FALSE
+)
+```

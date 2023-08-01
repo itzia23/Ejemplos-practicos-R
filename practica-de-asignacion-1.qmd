@@ -5,7 +5,7 @@ date: "2023-07-24"
 
 ## Asignación 1 despliegue de hipervinculo
 
-Libreria DT, dataTables que permite mostrar datos de R en una tabla interactiva en una página web. 
+Libreria DT, dataTables que permite mostrar datos de R en una tabla interactiva en una página web.
 
 La librería dplyr en R es una herramienta muy útil para la manipulación de datos.
 
@@ -15,10 +15,12 @@ library(dplyr)
 ```
 
 para la lecctura de archivos cvs se utilizá la función read.cvs para leer el archivo CSV
+
 ```{r}
 
 datos<- read.csv("C:/Users/itzi2/Downloads/lista-empresas.csv")
 ```
+
 La función selec() en R es parte de la librería dplyr y se utiliza para seleccionar columnas específicas de un marco de datos. se puede utilizar esta función para extraer las columnas que necesitas y descartar las que no son relevantes en el análisis.
 
 ```{r}
@@ -26,14 +28,16 @@ La función selec() en R es parte de la librería dplyr y se utiliza para selecc
 datos_filtrados <- select(datos, Industria, Derpartmento)
 datos_filtrados
 ```
-La función select() en R, como se muestra en los resultados de búsqueda, es parte de la librería dplyr y se utiliza para seleccionar columnas específicas de un dataframe. Puedes utilizar esta función para extraer las columnas que necesitas de un dataframe.
-Aquí tienes un ejemplo básico de cómo utilizar la función select():
+
+La función select() en R, como se muestra en los resultados de búsqueda, es parte de la librería dplyr y se utiliza para seleccionar columnas específicas de un dataframe. Puedes utilizar esta función para extraer las columnas que necesitas de un dataframe. Aquí tienes un ejemplo básico de cómo utilizar la función select():
+
 ```{r}
 enlace <- select(datos, Link, Etiqueta)
 enlace
 ```
 
 El código que se muestra utiliza la librería purrr de R para crear una lista de enlaces HTML a partir de un dataframe llamado enlace. En particular, utiliza la función map2() de purrr, que itera sobre dos vectores simultáneamente y aplica una función a cada par de elementos. En este caso, la función toma el enlace y la etiqueta correspondiente de cada fila del dataframe enlace, y los combina en un enlace HTML utilizando la función paste0(). El resultado es una lista de enlaces HTML que se guarda en la variable vinculo.
+
 ```{r}
 library(purrr)
 vinculo<-list()
@@ -43,10 +47,10 @@ vinculo<- map2(enlace$Link,seq_along(enlace$Link),function(link,i){
 vinculo<- vinculo %>% do.call(rbind, .)%>% data_frame(Vinculo=.)
 ```
 
-
 ![](https://upload.wikimedia.org/wikipedia/commons/e/e7/Logo_de_la_Superintendencia_de_Seguros_y_Reaseguros_de_Panam%C3%A1.jpg)
 
-El código que se muestra utiliza la función cbind() para combinar dos dataframes: datos_filtrados y vinculo. Luego, utiliza el operador %>% para pasar el resultado a la función datatable() de la librería DT. Esta función convierte el dataframe en una tabla interactiva que se puede mostrar en una página web.
+El código que se muestra utiliza la función cbind() para combinar dos dataframes: datos_filtrados y vinculo. Luego, utiliza el operador %\>% para pasar el resultado a la función datatable() de la librería DT. Esta función convierte el dataframe en una tabla interactiva que se puede mostrar en una página web.
+
 ```{r}
 cbind(datos_filtrados, vinculo)%>% datatable(filter = "bottom",escape = FALSE) 
 ```
