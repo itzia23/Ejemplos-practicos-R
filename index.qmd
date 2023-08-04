@@ -2,7 +2,7 @@
 title: ""
 ---
 
-## [Asignación 3](Dividir-texto-en-Columna-stringr.qmd)
+## [Asignación 3](Dividir%20texto%20en%20Columna%20stringr.qmd)
 
 ## [Asignación 2](ejemplo%20de%20hiperlink.qmd)
 
