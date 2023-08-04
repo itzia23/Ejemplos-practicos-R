@@ -1,7 +1,10 @@
 ---
 title: ""
 ---
-## [Asignación 2](ejemplo de hiperlink.qmd)
+
+## [Asignación 3](Dividir-texto-en-Columna-stringr.qmd)
+
+## [Asignación 2](ejemplo%20de%20hiperlink.qmd)
 
 ## [Asignación 1](practica-de-asignacion-1.qmd)
 

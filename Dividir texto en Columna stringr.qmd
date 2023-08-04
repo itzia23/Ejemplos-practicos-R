@@ -1,0 +1,29 @@
+```{r}
+library(DT)
+library(dplyr)
+library(tidyr)
+library(stringr)
+```
+
+```{r}
+datos<- read.csv(file = "./DatosPeronales - StringR.csv")
+```
+
+```{r}
+datos_divididos<- data_frame(datos)
+datos_divididos
+```
+
+```{r}
+datos_dividi <- datos %>% 
+  separate(Nombre, into = c("Nombre", "Edad"), sep = "-| /") %>%
+  separate(Dirección, into = c("Provincia", "Distrito"), sep = "-") 
+ 
+```
+
+```{r}
+ datos_dividi %>% datatable(
+  escape = FALSE, 
+  rownames = FALSE
+)
+```
