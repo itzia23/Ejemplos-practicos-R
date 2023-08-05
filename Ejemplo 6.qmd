@@ -1,0 +1,34 @@
+---
+title: "Libreria dplyr, Función group_by()"
+output: html_document
+date: "2023-08-05"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Se utiliza las funciones group_by() y summarise() de el paquete dplyr para agrupar las filas del marco de datos df por la columna Región y calcular las ventas y ganancias totales para cada región. Esta función se usa comúnmente para resumir marcos de datos en R.
+
+```{r}
+library(dplyr)
+library(DT)
+
+df = read.csv("C:/Users/itzi2/Documents/ejemplos/Ejemplos practicos R/Sample_Superstore.csv")
+
+df_grp_region = df %>% group_by(Region) %>%
+					summarise(total_sales = sum(Sales),
+							total_profits = sum(Profit),
+							.groups = 'drop')
+
+
+```
+
+En este código, la función datatable() se usa para mostrar el marco de datos df_grp_region como una tabla interactiva. El argumento de escape se establece en FALSO para evitar que se escapen las entidades HTML, y el argumento de nombres de fila se establece en FALSO para ocultar los nombres de fila en la tabla.
+
+```{r}
+ df_grp_region %>% datatable(
+  escape = FALSE, 
+  rownames = FALSE
+)
+```

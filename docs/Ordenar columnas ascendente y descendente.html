@@ -6,9 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2023-07-24">
+<meta name="dcterms.date" content="2023-07-31">
 
-<title>Ejemplos practicos R - Asignación</title>
+<title>Ejemplos practicos R - ejemplo 5</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -102,10 +102,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="site_libs/dt-core-1.13.4/css/jquery.dataTables.min.css" rel="stylesheet">
 <link href="site_libs/dt-core-1.13.4/css/jquery.dataTables.extra.css" rel="stylesheet">
 <script src="site_libs/dt-core-1.13.4/js/jquery.dataTables.min.js"></script>
-<link href="site_libs/nouislider-7.0.10/jquery.nouislider.min.css" rel="stylesheet">
-<script src="site_libs/nouislider-7.0.10/jquery.nouislider.min.js"></script>
-<link href="site_libs/selectize-0.12.0/selectize.bootstrap3.css" rel="stylesheet">
-<script src="site_libs/selectize-0.12.0/selectize.min.js"></script>
 <link href="site_libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet">
 <script src="site_libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
 
@@ -146,20 +142,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#asignación-1-despliegue-de-hipervinculo" id="toc-asignación-1-despliegue-de-hipervinculo" class="nav-link active" data-scroll-target="#asignación-1-despliegue-de-hipervinculo">Asignación 1 despliegue de hipervinculo</a></li>
-  </ul>
-</nav>
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Asignación</h1>
+<h1 class="title">ejemplo 5</h1>
 </div>
 
 
@@ -170,7 +160,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">July 24, 2023</p>
+      <p class="date">July 31, 2023</p>
     </div>
   </div>
   
@@ -180,96 +170,89 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<section id="asignación-1-despliegue-de-hipervinculo" class="level2">
-<h2 class="anchored" data-anchor-id="asignación-1-despliegue-de-hipervinculo">Asignación 1 despliegue de hipervinculo</h2>
-<p>Libreria DT, dataTables que permite mostrar datos de R en una tabla interactiva en una página web.</p>
-<p>La librería dplyr en R es una herramienta muy útil para la manipulación de datos.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DT)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>para la lecctura de archivos cvs se utilizá la función read.cvs para leer el archivo CSV</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>datos<span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"C:/Users/itzi2/Downloads/lista-empresas.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>La función selec() en R es parte de la librería dplyr y se utiliza para seleccionar columnas específicas de un marco de datos. se puede utilizar esta función para extraer las columnas que necesitas y descartar las que no son relevantes en el análisis.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>datos_filtrados <span class="ot">&lt;-</span> <span class="fu">select</span>(datos, Industria, Derpartmento)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>datos_filtrados</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>     Industria        Derpartmento
-1        Banco     Recursos Humano
-2        Banco     Recursos Humano
-3        Banco Servicio al Cliente
-4  Cooperativa Servicio al Cliente
-5  Cooperativa            Asociado
-6  Cooperativa            Asociado
-7  Cooperativa            Asociado
-8  Cooperativa            Asociado
-9  Cooperativa            Asociado
-10     Seguros              Poliza
-11     Seguros              Poliza
-12     Seguros              Poliza
-13     Seguros              Cobros
-14     Seguros              Cobros
-15     Seguros              Cobros
-16  Tecnologia              Cobros
-17  Tecnologia Servicio al Cliente
-18  Tecnologia              Cobros</code></pre>
-</div>
-</div>
-<p>La función select() en R, como se muestra en los resultados de búsqueda, es parte de la librería dplyr y se utiliza para seleccionar columnas específicas de un dataframe. Puedes utilizar esta función para extraer las columnas que necesitas de un dataframe. Aquí tienes un ejemplo básico de cómo utilizar la función select():</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>enlace <span class="ot">&lt;-</span> <span class="fu">select</span>(datos, Link, Etiqueta)</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>enlace</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>                                   Link                  Etiqueta
-1          https://www.banconal.com.pa/            Banco Nacional
-2          https://www.banconal.com.pa/            Banco Nacional
-3          https://www.banconal.com.pa/            Banco Nacional
-4             https://www.coeduco.coop/                   COEDUCO
-5             https://www.coeduco.coop/                   COEDUCO
-6             https://www.coeduco.coop/                   COEDUCO
-7  https://www.cooprofesionales.com.pa/ Cooperativa Profesionales
-8  https://www.cooprofesionales.com.pa/ Cooperativa Profesionales
-9  https://www.cooprofesionales.com.pa/ Cooperativa Profesionales
-10            https://www.iseguros.com/  Internacional de Seguros
-11            https://www.iseguros.com/  Internacional de Seguros
-12            https://www.iseguros.com/  Internacional de Seguros
-13                https://www.sura.com/                      Sura
-14                https://www.sura.com/                      Sura
-15                https://www.sura.com/                      Sura
-16                         www.dell.com                      DELL
-17                         www.dell.com                      DELL
-18                         www.dell.com                      DELL</code></pre>
-</div>
-</div>
-<p>El código que se muestra utiliza la librería purrr de R para crear una lista de enlaces HTML a partir de un dataframe llamado enlace. En particular, utiliza la función map2() de purrr, que itera sobre dos vectores simultáneamente y aplica una función a cada par de elementos. En este caso, la función toma el enlace y la etiqueta correspondiente de cada fila del dataframe enlace, y los combina en un enlace HTML utilizando la función paste0(). El resultado es una lista de enlaces HTML que se guarda en la variable vinculo.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(purrr)</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>vinculo<span class="ot">&lt;-</span><span class="fu">list</span>()</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>vinculo<span class="ot">&lt;-</span> <span class="fu">map2</span>(enlace<span class="sc">$</span>Link,<span class="fu">seq_along</span>(enlace<span class="sc">$</span>Link),<span class="cf">function</span>(link,i){</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  combinacion <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">"&lt;a href='"</span>,link,<span class="st">"' &gt;"</span>,enlace<span class="sc">$</span>Etiqueta[[i]],<span class="st">"&lt;/a&gt;"</span>)</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>})</span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>vinculo<span class="ot">&lt;-</span> vinculo <span class="sc">%&gt;%</span> <span class="fu">do.call</span>(rbind, .)<span class="sc">%&gt;%</span> <span class="fu">data_frame</span>(<span class="at">Vinculo=</span>.)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Warning: `data_frame()` was deprecated in tibble 1.1.0.
-ℹ Please use `tibble()` instead.</code></pre>
+<pre><code>
+Attaching package: 'dplyr'</code></pre>
 </div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:stats':
+
+    filter, lag</code></pre>
 </div>
-<p><img src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Logo_de_la_Superintendencia_de_Seguros_y_Reaseguros_de_Panam%C3%A1.jpg" class="img-fluid"></p>
-<p>El código que se muestra utiliza la función cbind() para combinar dos dataframes: datos_filtrados y vinculo. Luego, utiliza el operador %&gt;% para pasar el resultado a la función datatable() de la librería DT. Esta función convierte el dataframe en una tabla interactiva que se puede mostrar en una página web.</p>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:base':
+
+    intersect, setdiff, setequal, union</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stringr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>En este código, la función read.csv() se usa para leer el archivo CSV llamado “DatosPeronales - StringR.csv” ubicado en el directorio de trabajo actual. La ruta del archivo se especifica mediante el argumento del archivo. Después de ejecutar este código, los datos del archivo CSV se almacenarán en la variable datos como un marco de datos.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cbind</span>(datos_filtrados, vinculo)<span class="sc">%&gt;%</span> <span class="fu">datatable</span>(<span class="at">filter =</span> <span class="st">"bottom"</span>,<span class="at">escape =</span> <span class="cn">FALSE</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>datos<span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="at">file =</span> <span class="st">"./DatosPeronales - StringR.csv"</span>)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>datos</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>        Nombre        Dirección
+1    Juan / 12 Coclé - Penonomé
+2     Ana / 20     Coclé - Natá
+3   Pedro / 34      Coclé - Olá
+4     Rosa / 5    Coclé - Antón
+5  Esther / 56 Coclé - Penonomé
+6   Mario / 17 Coclé - Penonomé
+7   Javier -45     Coclé - Natá
+8  Carlos - 23      Coclé - Olá
+9   Dilia - 22    Coclé - Antón
+10 Indira - 15 Coclé - Penonomé</code></pre>
+</div>
+</div>
+<p>La función de separación () se utiliza para dividir una columna en varias columnas en función de un delimitador. El argumento into especifica los nombres de las nuevas columnas que se van a crear y el argumento sep especifica el delimitador que se usará para dividir. En este código, la columna Nombre se divide en dos columnas ‘Nombre’ y ‘Edad’ usando los delimitadores - y /. Luego, la columna Dirección se divide en dos columnas ‘Provincia’ y ‘Distrito’ usando el delimitador -.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>datos_dividi <span class="ot">&lt;-</span> datos <span class="sc">%&gt;%</span> </span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">separate</span>(Nombre, <span class="at">into =</span> <span class="fu">c</span>(<span class="st">"Nombre"</span>, <span class="st">"Edad"</span>), <span class="at">sep =</span> <span class="st">"-| /"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">separate</span>(Dirección, <span class="at">into =</span> <span class="fu">c</span>(<span class="st">"Provincia"</span>, <span class="st">"Distrito"</span>), <span class="at">sep =</span> <span class="st">"-"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>El código df &lt;- data.frame( datos_dividi ) utiliza la función data.frame() para crear un nuevo marco de datos df a partir del objeto datos_dividi.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>( datos_dividi )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>El código de arrange(datos_dividi, Edad) está usando la función de arrange() del paquete dplyr para ordenar las filas del marco de datos datos_dividi por los valores en la columna Edad. Esta función se usa comúnmente para ordenar marcos de datos en R.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">arrange</span>(datos_dividi , Edad)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>    Nombre Edad Provincia  Distrito
+1     Juan   12    Coclé   Penonomé
+2  Indira    15    Coclé   Penonomé
+3    Mario   17    Coclé   Penonomé
+4      Ana   20    Coclé       Natá
+5   Dilia    22    Coclé      Antón
+6  Carlos    23    Coclé        Olá
+7    Pedro   34    Coclé        Olá
+8     Rosa    5    Coclé      Antón
+9   Esther   56    Coclé   Penonomé
+10 Javier    45    Coclé       Natá</code></pre>
+</div>
+</div>
+<p>El código nuevo &lt;-arrange(datos_dividi, desc(Distrito)) está usando la función Organize() del paquete dplyr para ordenar las filas del marco de datos datos_dividi por los valores en la columna Distrito en orden descendente. Esta función se usa comúnmente para ordenar marcos de datos en R.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>nuevo <span class="ot">&lt;-</span> <span class="fu">arrange</span>(datos_dividi, <span class="fu">desc</span>(Distrito))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>En este código, la función datatable() se usa para mostrar el marco de datos datos_dividi como una tabla interactiva. El argumento de escape se establece en FALSO para evitar que se escapen las entidades HTML, y el argumento de nombres de fila se establece en FALSO para ocultar los nombres de fila en la tabla</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>nuevo <span class="sc">%&gt;%</span> <span class="fu">datatable</span>(</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">escape =</span> <span class="cn">FALSE</span>, </span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">rownames =</span> <span class="cn">FALSE</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 
-<div class="datatables html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-b32146340e8c0beb9c01" style="width:100%;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-b32146340e8c0beb9c01">{"x":{"filter":"bottom","vertical":false,"filterHTML":"<tr>\n  <td><\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n<\/tr>","data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18"],["Banco","Banco","Banco","Cooperativa","Cooperativa","Cooperativa","Cooperativa","Cooperativa","Cooperativa","Seguros","Seguros","Seguros","Seguros","Seguros","Seguros","Tecnologia","Tecnologia","Tecnologia"],["Recursos Humano","Recursos Humano","Servicio al Cliente","Servicio al Cliente","Asociado","Asociado","Asociado","Asociado","Asociado","Poliza","Poliza","Poliza","Cobros","Cobros","Cobros","Cobros","Servicio al Cliente","Cobros"],[["<a href='https://www.banconal.com.pa/' >Banco Nacional<\/a>"],["<a href='https://www.banconal.com.pa/' >Banco Nacional<\/a>"],["<a href='https://www.banconal.com.pa/' >Banco Nacional<\/a>"],["<a href='https://www.coeduco.coop/' >COEDUCO<\/a>"],["<a href='https://www.coeduco.coop/' >COEDUCO<\/a>"],["<a href='https://www.coeduco.coop/' >COEDUCO<\/a>"],["<a href='https://www.cooprofesionales.com.pa/' >Cooperativa Profesionales<\/a>"],["<a href='https://www.cooprofesionales.com.pa/' >Cooperativa Profesionales<\/a>"],["<a href='https://www.cooprofesionales.com.pa/' >Cooperativa Profesionales<\/a>"],["<a href='https://www.iseguros.com/' >Internacional de Seguros<\/a>"],["<a href='https://www.iseguros.com/' >Internacional de Seguros<\/a>"],["<a href='https://www.iseguros.com/' >Internacional de Seguros<\/a>"],["<a href='https://www.sura.com/' >Sura<\/a>"],["<a href='https://www.sura.com/' >Sura<\/a>"],["<a href='https://www.sura.com/' >Sura<\/a>"],["<a href='www.dell.com' >DELL<\/a>"],["<a href='www.dell.com' >DELL<\/a>"],["<a href='www.dell.com' >DELL<\/a>"]]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Industria<\/th>\n      <th>Derpartmento<\/th>\n      <th>Vinculo<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<div class="datatables html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-d82679aa50fe3e394a61" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-d82679aa50fe3e394a61">{"x":{"filter":"none","vertical":false,"data":[["Juan","Esther","Mario","Indira ","Pedro","Carlos ","Ana","Javier ","Rosa","Dilia "],[" 12"," 56"," 17"," 15"," 34"," 23"," 20","45"," 5"," 22"],["Coclé ","Coclé ","Coclé ","Coclé ","Coclé ","Coclé ","Coclé ","Coclé ","Coclé ","Coclé "],[" Penonomé"," Penonomé"," Penonomé"," Penonomé"," Olá"," Olá"," Natá"," Natá"," Antón"," Antón"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>Nombre<\/th>\n      <th>Edad<\/th>\n      <th>Provincia<\/th>\n      <th>Distrito<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 
 
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

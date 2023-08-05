@@ -1,0 +1,54 @@
+---
+title: "ejemplo 5"
+output: html_document
+date: "2023-07-31"
+---
+
+```{r}
+library(DT)
+library(dplyr)
+library(tidyr)
+library(stringr)
+```
+
+En este código, la función read.csv() se usa para leer el archivo CSV llamado "DatosPeronales - StringR.csv" ubicado en el directorio de trabajo actual. La ruta del archivo se especifica mediante el argumento del archivo. Después de ejecutar este código, los datos del archivo CSV se almacenarán en la variable datos como un marco de datos.
+
+```{r}
+datos<- read.csv(file = "./DatosPeronales - StringR.csv")
+datos
+```
+
+La función de separación () se utiliza para dividir una columna en varias columnas en función de un delimitador. El argumento into especifica los nombres de las nuevas columnas que se van a crear y el argumento sep especifica el delimitador que se usará para dividir. En este código, la columna Nombre se divide en dos columnas 'Nombre' y 'Edad' usando los delimitadores - y /. Luego, la columna Dirección se divide en dos columnas 'Provincia' y 'Distrito' usando el delimitador -.
+
+```{r}
+datos_dividi <- datos %>% 
+  separate(Nombre, into = c("Nombre", "Edad"), sep = "-| /") %>%
+  separate(Dirección, into = c("Provincia", "Distrito"), sep = "-") 
+```
+
+El código df \<- data.frame( datos_dividi ) utiliza la función data.frame() para crear un nuevo marco de datos df a partir del objeto datos_dividi.
+
+```{r}
+df <- data.frame( datos_dividi )
+```
+
+El código de arrange(datos_dividi, Edad) está usando la función de arrange() del paquete dplyr para ordenar las filas del marco de datos datos_dividi por los valores en la columna Edad. Esta función se usa comúnmente para ordenar marcos de datos en R.
+
+```{r}
+arrange(datos_dividi , Edad)
+```
+
+El código nuevo \<-arrange(datos_dividi, desc(Distrito)) está usando la función Organize() del paquete dplyr para ordenar las filas del marco de datos datos_dividi por los valores en la columna Distrito en orden descendente. Esta función se usa comúnmente para ordenar marcos de datos en R.
+
+```{r}
+nuevo <- arrange(datos_dividi, desc(Distrito))
+```
+
+En este código, la función datatable() se usa para mostrar el marco de datos datos_dividi como una tabla interactiva. El argumento de escape se establece en FALSO para evitar que se escapen las entidades HTML, y el argumento de nombres de fila se establece en FALSO para ocultar los nombres de fila en la tabla
+
+```{r}
+nuevo %>% datatable(
+  escape = FALSE, 
+  rownames = FALSE
+)
+```
