@@ -1,5 +1,35 @@
+---
+title: "Ejemplo 8"
+---
+## Ejemplo 8
+El paquete caret, incluye una serie de funciones que facilitan el uso de decenas de métodos complejos de clasificación y regresión. 
+```{r, message=FALSE}
+library(dplyr)
+library(caret)
+library(package = "lattice")
+df = read.csv("C:/Users/itzi2/Documents/ejemplos/Ejemplos practicos R/Sample_Superstore.csv")
+```
+
+
+Las variables consideradas corresponden a distintos aspectos de la forma del núcleo. El fichero contiene un data frame, llamado breast.cancer2.
+
+La función head() en R se usa para mostrar las primeras filas de un marco de datos o una matriz. Le permite inspeccionar rápidamente la estructura y el contenido de los datos.
+
+```{r}
+head(df)
+```
+Geom_bar es la función que se utiliza en ggplot2 para hacer un gráfico de barras, se agrega al objeto ggplot creado (g) con un +, especificando el color y relleno del gràfico o bien se puede añadir en una capa adicional. Finalemente se agrega el titulo y nombre de la etiqueta en el eje x al gràfico con labs.
+```{r}
+library("ggplot2")
+g <- ggplot(df, aes(Sales))+ geom_bar(fill = "gray", colour = "green")
+g + labs(list(title = "Datos", x="Sales"))
+```
+
+
 ## EJEMPLO 7
-"Librería dplyr, función rename()   5/8/2023
+
+"Librería dplyr, función rename() 5/8/2023
+
 ```{r}
 library(DT)
 library(dplyr)
@@ -29,9 +59,10 @@ nuevos_nombres %>% datatable(
   rownames = FALSE
 )
 ```
+
 ## EJEMPLO 6
-"Libreria dplyr, Función group_by()"
- "2023-08-05"
+
+"Libreria dplyr, Función group_by()" "2023-08-05"
 
 Se utiliza las funciones group_by() y summarise() de el paquete dplyr para agrupar las filas del marco de datos df por la columna Región y calcular las ventas y ganancias totales para cada región. Esta función se usa comúnmente para resumir marcos de datos en R.
 
@@ -58,10 +89,8 @@ En este código, la función datatable() se usa para mostrar el marco de datos d
 )
 ```
 
-
-
-
 ## EJEMPLO 5
+
 Libreria dplyr, función arrange "2023-07-31"
 
 ```{r}

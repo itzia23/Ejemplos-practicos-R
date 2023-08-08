@@ -1,0 +1,25 @@
+---
+title: "Ejemplo 8"
+---
+
+El paquete caret, incluye una serie de funciones que facilitan el uso de decenas de métodos complejos de clasificación y regresión. 
+```{r}
+library(dplyr)
+library(caret)
+library(package = "lattice")
+df = read.csv("C:/Users/itzi2/Documents/ejemplos/Ejemplos practicos R/Sample_Superstore.csv")
+```
+Las variables consideradas corresponden a distintos aspectos de la forma del núcleo. El fichero contiene un data frame, llamado breast.cancer2.
+
+La función head() en R se usa para mostrar las primeras filas de un marco de datos o una matriz. Le permite inspeccionar rápidamente la estructura y el contenido de los datos.
+
+```{r}
+head(df)
+```
+Geom_bar es la función que se utiliza en ggplot2 para hacer un gráfico de barras, se agrega al objeto ggplot creado (g) con un +, especificando el color y relleno del gràfico o bien se puede añadir en una capa adicional. Finalemente se agrega el titulo y nombre de la etiqueta en el eje x al gràfico con labs.
+```{r}
+library("ggplot2")
+g <- ggplot(df, aes(Sales))+ geom_bar(fill = "gray", colour = "green")
+g + labs(list(title = "Datos", x="Sales"))
+```
+

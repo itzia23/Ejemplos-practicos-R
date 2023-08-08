@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Ejemplos practicos R</title>
+<title>Ejemplos practicos R - Ejemplo 8</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -145,7 +145,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#ejemplo-7" id="toc-ejemplo-7" class="nav-link active" data-scroll-target="#ejemplo-7">EJEMPLO 7</a></li>
+  <li><a href="#ejemplo-8" id="toc-ejemplo-8" class="nav-link active" data-scroll-target="#ejemplo-8">Ejemplo 8</a></li>
+  <li><a href="#ejemplo-7" id="toc-ejemplo-7" class="nav-link" data-scroll-target="#ejemplo-7">EJEMPLO 7</a></li>
   <li><a href="#ejemplo-6" id="toc-ejemplo-6" class="nav-link" data-scroll-target="#ejemplo-6">EJEMPLO 6</a></li>
   <li><a href="#ejemplo-5" id="toc-ejemplo-5" class="nav-link" data-scroll-target="#ejemplo-5">EJEMPLO 5</a></li>
   <li><a href="#asignación-3" id="toc-asignación-3" class="nav-link" data-scroll-target="#asignación-3">Asignación 3</a></li>
@@ -160,29 +161,63 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Ejemplo 8</h1>
+</div>
 
 
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="ejemplo-8" class="level2">
+<h2 class="anchored" data-anchor-id="ejemplo-8">Ejemplo 8</h2>
+<p>El paquete caret, incluye una serie de funciones que facilitan el uso de decenas de métodos complejos de clasificación y regresión.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(caret)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="at">package =</span> <span class="st">"lattice"</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>df <span class="ot">=</span> <span class="fu">read.csv</span>(<span class="st">"C:/Users/itzi2/Documents/ejemplos/Ejemplos practicos R/Sample_Superstore.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Las variables consideradas corresponden a distintos aspectos de la forma del núcleo. El fichero contiene un data frame, llamado breast.cancer2.</p>
+<p>La función head() en R se usa para mostrar las primeras filas de un marco de datos o una matriz. Le permite inspeccionar rápidamente la estructura y el contenido de los datos.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  Row.ID      State Region        Category Sub.Category    Sales    Profit
+1      1   Kentucky  South       Furniture    Bookcases 261.9600   41.9136
+2      2   Kentucky  South       Furniture       Chairs 731.9400  219.5820
+3      3 California   West Office Supplies       Labels  14.6200    6.8714
+4      4    Florida  South       Furniture       Tables 957.5775 -383.0310
+5      5    Florida  South Office Supplies      Storage  22.3680    2.5164
+6      6 California   West       Furniture  Furnishings  48.8600   14.1694</code></pre>
+</div>
+</div>
+<p>Geom_bar es la función que se utiliza en ggplot2 para hacer un gráfico de barras, se agrega al objeto ggplot creado (g) con un +, especificando el color y relleno del gràfico o bien se puede añadir en una capa adicional. Finalemente se agrega el titulo y nombre de la etiqueta en el eje x al gràfico con labs.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"ggplot2"</span>)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(df, <span class="fu">aes</span>(Sales))<span class="sc">+</span> <span class="fu">geom_bar</span>(<span class="at">fill =</span> <span class="st">"gray"</span>, <span class="at">colour =</span> <span class="st">"green"</span>)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>g <span class="sc">+</span> <span class="fu">labs</span>(<span class="fu">list</span>(<span class="at">title =</span> <span class="st">"Datos"</span>, <span class="at">x=</span><span class="st">"Sales"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="index_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
 <section id="ejemplo-7" class="level2">
 <h2 class="anchored" data-anchor-id="ejemplo-7">EJEMPLO 7</h2>
 <p>“Librería dplyr, función rename() 5/8/2023</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DT)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>
-Attaching package: 'dplyr'</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>The following objects are masked from 'package:stats':
-
-    filter, lag</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>The following objects are masked from 'package:base':
-
-    intersect, setdiff, setequal, union</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DT)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>La librería readxl se utiliza para leer archivos de Excel en R.</p>
 <div class="cell">
@@ -217,8 +252,8 @@ Attaching package: 'dplyr'</code></pre>
 <span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 
-<div class="datatables html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-16797011e4a6f879fed0" style="width:100%;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-16797011e4a6f879fed0">{"x":{"filter":"none","vertical":false,"data":[[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37],["Health","Agriculture","World Economic","Financial Services","Insurance","Logistic","Ambient","Retail-Sales","Health","Real Estate","Cars","Health","AML","Health","World Economic","Banks","Clinic Research","Benchmark","Food","Banks","Sports","Clinic Research","Clinic Research","Clinic Research","Clinic Research","Clinic Research","Clinic Research","Clinic Research","Clinic Research","Retail","Human Resources","Human Resources","Customer","Research","Research","Ambient","Research"],["Cadio Vascular","Wine","Wolrd Econimic","Credit","Cars Loss","Supply Chain","Forest Fire","Supermarket","Disease","Real Estate","Automobile","Covid","AML","Nutritional","GDP-PIB","Bankruptcy","Clinical Labs","Smartphones","Food","Banks","Sport Scoccer","Heart Failure","Heart","Hematology","Brest Cancer","Brest","Meandeley","Brest Cancer","Hematology","Cameras Segmentation","HR Engagement","HR Absenteeism","Churn","Smokers","Cells","Air Quality","Biopsy"],["https://dataspeople.ai/post/gallery/dp-cardio-vascular.html","https://dataspeople.ai/post/gallery/dp-wine-quality.html","https://dataspeople.ai/post/gallery/dp-world-population.html","https://dataspeople.ai/post/gallery/dp-credit-customer.html","https://dataspeople.ai/post/gallery/dp-crash-automobile.html","https://dataspeople.ai/post/gallery/dp-supply-chain.html","https://dataspeople.ai/post/gallery/dp-forestfire.html","https://dataspeople.ai/post/gallery/dp-supermarket.html","https://dataspeople.ai/post/gallery/dp-disease-sympton.html","https://dataspeople.ai/post/gallery/dp-housing.html","https://dataspeople.ai/post/gallery/dp-automobile.html","https://dataspeople.ai/post/gallery/dp-latest-covid.html","https://dataspeople.ai/post/gallery/dp-aml.html","https://dataspeople.ai/post/gallery/dp-nutritional.html","https://dataspeople.ai/post/gallery/dp-gdp.html","https://dataspeople.ai/post/gallery/dp-bankruptcy.html","https://dataspeople.ai/post/gallery/dp-clinic-labs.html","https://dataspeople.ai/post/gallery/dp-smartphones.html","https://dataspeople.ai/post/gallery/dp-food.html","https://dataspeople.ai/post/gallery/dp-banks.html","https://dataspeople.ai/post/gallery/dp-sports-soccer.html","https://dataspeople.ai/post/gallery/dp-heart-failure.html","https://dataspeople.ai/post/gallery/dp-heart.html","https://dataspeople.ai/post/gallery/dp-hematology.html","https://dataspeople.ai/post/gallery/dp-breast-cancer.html","https://dataspeople.ai/post/gallery/dp-breast.html","https://dataspeople.ai/post/gallery/dp-meandeley.html","https://dataspeople.ai/post/gallery/dp-brca.html","https://dataspeople.ai/post/gallery/dp-hetamology2.html","https://dataspeople.ai/post/gallery/dp-cameras.html","https://dataspeople.ai/post/gallery/dp-emp-engagement.html","https://dataspeople.ai/post/gallery/dp-absenteeism.html","https://dataspeople.ai/post/gallery/dp-churn.html","https://dataspeople.ai/post/gallery/dp-smokers.html","https://dataspeople.ai/post/gallery/dp-cells.html","https://dataspeople.ai/post/gallery/de-air-quality.html","https://dataspeople.ai/post/gallery/dp-biopsy.html"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>#<\/th>\n      <th>Materia<\/th>\n      <th>Areas<\/th>\n      <th>Enlace<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<div class="datatables html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-09a9b5dcac06fd8c8563" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-09a9b5dcac06fd8c8563">{"x":{"filter":"none","vertical":false,"data":[[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37],["Health","Agriculture","World Economic","Financial Services","Insurance","Logistic","Ambient","Retail-Sales","Health","Real Estate","Cars","Health","AML","Health","World Economic","Banks","Clinic Research","Benchmark","Food","Banks","Sports","Clinic Research","Clinic Research","Clinic Research","Clinic Research","Clinic Research","Clinic Research","Clinic Research","Clinic Research","Retail","Human Resources","Human Resources","Customer","Research","Research","Ambient","Research"],["Cadio Vascular","Wine","Wolrd Econimic","Credit","Cars Loss","Supply Chain","Forest Fire","Supermarket","Disease","Real Estate","Automobile","Covid","AML","Nutritional","GDP-PIB","Bankruptcy","Clinical Labs","Smartphones","Food","Banks","Sport Scoccer","Heart Failure","Heart","Hematology","Brest Cancer","Brest","Meandeley","Brest Cancer","Hematology","Cameras Segmentation","HR Engagement","HR Absenteeism","Churn","Smokers","Cells","Air Quality","Biopsy"],["https://dataspeople.ai/post/gallery/dp-cardio-vascular.html","https://dataspeople.ai/post/gallery/dp-wine-quality.html","https://dataspeople.ai/post/gallery/dp-world-population.html","https://dataspeople.ai/post/gallery/dp-credit-customer.html","https://dataspeople.ai/post/gallery/dp-crash-automobile.html","https://dataspeople.ai/post/gallery/dp-supply-chain.html","https://dataspeople.ai/post/gallery/dp-forestfire.html","https://dataspeople.ai/post/gallery/dp-supermarket.html","https://dataspeople.ai/post/gallery/dp-disease-sympton.html","https://dataspeople.ai/post/gallery/dp-housing.html","https://dataspeople.ai/post/gallery/dp-automobile.html","https://dataspeople.ai/post/gallery/dp-latest-covid.html","https://dataspeople.ai/post/gallery/dp-aml.html","https://dataspeople.ai/post/gallery/dp-nutritional.html","https://dataspeople.ai/post/gallery/dp-gdp.html","https://dataspeople.ai/post/gallery/dp-bankruptcy.html","https://dataspeople.ai/post/gallery/dp-clinic-labs.html","https://dataspeople.ai/post/gallery/dp-smartphones.html","https://dataspeople.ai/post/gallery/dp-food.html","https://dataspeople.ai/post/gallery/dp-banks.html","https://dataspeople.ai/post/gallery/dp-sports-soccer.html","https://dataspeople.ai/post/gallery/dp-heart-failure.html","https://dataspeople.ai/post/gallery/dp-heart.html","https://dataspeople.ai/post/gallery/dp-hematology.html","https://dataspeople.ai/post/gallery/dp-breast-cancer.html","https://dataspeople.ai/post/gallery/dp-breast.html","https://dataspeople.ai/post/gallery/dp-meandeley.html","https://dataspeople.ai/post/gallery/dp-brca.html","https://dataspeople.ai/post/gallery/dp-hetamology2.html","https://dataspeople.ai/post/gallery/dp-cameras.html","https://dataspeople.ai/post/gallery/dp-emp-engagement.html","https://dataspeople.ai/post/gallery/dp-absenteeism.html","https://dataspeople.ai/post/gallery/dp-churn.html","https://dataspeople.ai/post/gallery/dp-smokers.html","https://dataspeople.ai/post/gallery/dp-cells.html","https://dataspeople.ai/post/gallery/de-air-quality.html","https://dataspeople.ai/post/gallery/dp-biopsy.html"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>#<\/th>\n      <th>Materia<\/th>\n      <th>Areas<\/th>\n      <th>Enlace<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 </section>
@@ -245,8 +280,8 @@ Attaching package: 'dplyr'</code></pre>
 <span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 
-<div class="datatables html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-6cb9ff70cbcd09128a91" style="width:100%;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-6cb9ff70cbcd09128a91">{"x":{"filter":"none","vertical":false,"data":[["Central","East","South","West"],[45502.3076,33797.924,12344.4475,37781.637],[-849.6142,1712.1439,-424.1281,4925.1094]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>Region<\/th>\n      <th>total_sales<\/th>\n      <th>total_profits<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[1,2]}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<div class="datatables html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-0b2ad21a0190160d7c8b" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-0b2ad21a0190160d7c8b">{"x":{"filter":"none","vertical":false,"data":[["Central","East","South","West"],[45502.3076,33797.924,12344.4475,37781.637],[-849.6142,1712.1439,-424.1281,4925.1094]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>Region<\/th>\n      <th>total_sales<\/th>\n      <th>total_profits<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[1,2]}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 </section>
@@ -316,8 +351,8 @@ Attaching package: 'dplyr'</code></pre>
 <span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 
-<div class="datatables html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-ef4c4224d241ad68069e" style="width:100%;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-ef4c4224d241ad68069e">{"x":{"filter":"none","vertical":false,"data":[["Juan","Esther","Mario","Indira ","Pedro","Carlos ","Ana","Javier ","Rosa","Dilia "],[" 12"," 56"," 17"," 15"," 34"," 23"," 20","45"," 5"," 22"],["Coclé ","Coclé ","Coclé ","Coclé ","Coclé ","Coclé ","Coclé ","Coclé ","Coclé ","Coclé "],[" Penonomé"," Penonomé"," Penonomé"," Penonomé"," Olá"," Olá"," Natá"," Natá"," Antón"," Antón"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>Nombre<\/th>\n      <th>Edad<\/th>\n      <th>Provincia<\/th>\n      <th>Distrito<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<div class="datatables html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-95d7e6b82459a7ac096b" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-95d7e6b82459a7ac096b">{"x":{"filter":"none","vertical":false,"data":[["Juan","Esther","Mario","Indira ","Pedro","Carlos ","Ana","Javier ","Rosa","Dilia "],[" 12"," 56"," 17"," 15"," 34"," 23"," 20","45"," 5"," 22"],["Coclé ","Coclé ","Coclé ","Coclé ","Coclé ","Coclé ","Coclé ","Coclé ","Coclé ","Coclé "],[" Penonomé"," Penonomé"," Penonomé"," Penonomé"," Olá"," Olá"," Natá"," Natá"," Antón"," Antón"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>Nombre<\/th>\n      <th>Edad<\/th>\n      <th>Provincia<\/th>\n      <th>Distrito<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 </section>
@@ -491,7 +526,7 @@ Attaching package: 'dplyr'</code></pre>
 ℹ Use `años` instead.</code></pre>
 </div>
 <div class="cell-output-display">
-<p><img src="index_files/figure-html/unnamed-chunk-24-1.png" class="img-fluid" width="672"></p>
+<p><img src="index_files/figure-html/unnamed-chunk-27-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 </section>
@@ -515,8 +550,8 @@ Attaching package: 'dplyr'</code></pre>
 <span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>iris_filtrado[<span class="dv">1</span>] <span class="sc">%&gt;%</span> datatable</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 
-<div class="datatables html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-7264be7609a8df5440e0" style="width:100%;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-7264be7609a8df5440e0">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30"],[5.1,5.4,5.4,5.8,5.7,5.4,5.1,5.7,5.1,5.4,5.1,5.1,5.2,5.2,5.4,5.2,5.5,5.5,5.1,5.1,5.1,5.3,7,6.4,6.9,5.5,6.5,5.7,6.3,6.6]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Sepal.Length<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":1},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<div class="datatables html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-fafe0df16d8e72d69b3e" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-fafe0df16d8e72d69b3e">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30"],[5.1,5.4,5.4,5.8,5.7,5.4,5.1,5.7,5.1,5.4,5.1,5.1,5.2,5.2,5.4,5.2,5.5,5.5,5.1,5.1,5.1,5.3,7,6.4,6.9,5.5,6.5,5.7,6.3,6.6]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Sepal.Length<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":1},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <ol start="3" type="1">
@@ -541,8 +576,8 @@ Attaching package: 'dplyr'</code></pre>
 <div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>iris_ordenado[<span class="dv">1</span>] <span class="sc">%&gt;%</span> datatable</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 
-<div class="datatables html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-b044b2c322cb614c772b" style="width:100%;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-b044b2c322cb614c772b">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30"],[7,6.9,6.6,6.5,6.4,6.3,5.8,5.7,5.7,5.7,5.5,5.5,5.5,5.4,5.4,5.4,5.4,5.4,5.3,5.2,5.2,5.2,5.1,5.1,5.1,5.1,5.1,5.1,5.1,5.1]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Sepal.Length<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":1},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<div class="datatables html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-943149a4dfd498c3ba1c" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-943149a4dfd498c3ba1c">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30"],[7,6.9,6.6,6.5,6.4,6.3,5.8,5.7,5.7,5.7,5.5,5.5,5.5,5.4,5.4,5.4,5.4,5.4,5.3,5.2,5.2,5.2,5.1,5.1,5.1,5.1,5.1,5.1,5.1,5.1]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Sepal.Length<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":1},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 
