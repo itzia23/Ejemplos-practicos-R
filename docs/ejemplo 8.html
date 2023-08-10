@@ -177,20 +177,30 @@ Attaching package: 'dplyr'</code></pre>
 <div class="cell-output cell-output-stderr">
 <pre><code>Loading required package: lattice</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="fu">url</span>(<span class="st">'http://verso.mat.uam.es/~joser.berrendero/datos/practica-svm-io.RData'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="at">package =</span> <span class="st">"lattice"</span>)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">=</span> <span class="fu">read.csv</span>(<span class="st">"C:/Users/itzi2/Documents/ejemplos/Ejemplos practicos R/Sample_Superstore.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Las variables consideradas corresponden a distintos aspectos de la forma del núcleo. El fichero contiene un data frame, llamado breast.cancer2.</p>
 <p>La función head() en R se usa para mostrar las primeras filas de un marco de datos o una matriz. Le permite inspeccionar rápidamente la estructura y el contenido de los datos.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(breast.cancer2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>   x.smoothness x.concavepoints y
-20      0.09779        0.047810 0
-21      0.10750        0.031100 0
-22      0.10240        0.020760 0
-38      0.08983        0.029230 0
-47      0.08600        0.005917 0
-49      0.10310        0.027490 0</code></pre>
+<pre><code>  Row.ID      State Region        Category Sub.Category    Sales    Profit
+1      1   Kentucky  South       Furniture    Bookcases 261.9600   41.9136
+2      2   Kentucky  South       Furniture       Chairs 731.9400  219.5820
+3      3 California   West Office Supplies       Labels  14.6200    6.8714
+4      4    Florida  South       Furniture       Tables 957.5775 -383.0310
+5      5    Florida  South Office Supplies      Storage  22.3680    2.5164
+6      6 California   West       Furniture  Furnishings  48.8600   14.1694</code></pre>
+</div>
+</div>
+<p>Geom_bar es la función que se utiliza en ggplot2 para hacer un gráfico de barras, se agrega al objeto ggplot creado (g) con un +, especificando el color y relleno del gràfico o bien se puede añadir en una capa adicional. Finalemente se agrega el titulo y nombre de la etiqueta en el eje x al gràfico con labs.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"ggplot2"</span>)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(df, <span class="fu">aes</span>(Sales))<span class="sc">+</span> <span class="fu">geom_bar</span>(<span class="at">fill =</span> <span class="st">"gray"</span>, <span class="at">colour =</span> <span class="st">"green"</span>)</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>g <span class="sc">+</span> <span class="fu">labs</span>(<span class="fu">list</span>(<span class="at">title =</span> <span class="st">"Datos"</span>, <span class="at">x=</span><span class="st">"Sales"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="ejemplo-8_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 
