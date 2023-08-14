@@ -1,0 +1,87 @@
+---
+title: "Asignación5_operaciones Dataframe A"
+fecha: 14/8/2023
+---
+
+```{r, message=FALSE}
+
+library(dplyr)
+library(tidyverse)
+library(openxlsx)
+library(readxl)
+library(DT)
+library(dplyr)
+```
+
+```{r}
+# Leer el primer archivo Excel data1
+data_excel1 <- read_xlsx("C:/Users/itzi2/Documents/ejemplos/Ejemplos practicos R/data1.xlsx")
+```
+
+## Insertar multiples columnas con ubicación especifica
+La función mutate() del paquete dplyr se usa para agregar tres nuevas columnas al marco de datos datos_excel5. 
+El argumento .after se usa para especificar la posición de las nuevas columnas en relación con las columnas existentes. 
+Los nombres de las columnas están entre comillas graves (`) para manejar caracteres especiales.
+
+```{r}
+datos_excel5 <- data_excel1
+datos_excel5 <- datos_excel5 %>% mutate("Columna-A, Fila1" = NA, .after ="instalada") %>% mutate("Columna-A, Fila2" = NA, .after= "generacion") %>% mutate("Columna-A, Fila3" = NA, .after = "firme")
+datos_excel5
+```
+
+Lectura de archivo data2, contiene el puntaje de Celdad A y B
+
+```{r}
+data_5 <- datos_excel5
+
+# Leer el segundo archivo Excel
+data_excel2 <- read_excel("C:/Users/itzi2/Documents/ejemplos/Ejemplos practicos R/data2.xlsx")
+```
+
+## Insertar valores 
+Archivo data2 a las columnas Columna-A, Fila1, fila2, fila3 
+El operador $ se utiliza para asignar el valor de la primera, segunda y tercera celdas de la columna A del marco de datos data_excel2 a las celdas del marco de datos data_5 con nombres específicos.
+Los acentos graves (') se utilizan para manejar caracteres especiales en los nombres de las columnas.
+Finalmente, el marco de datos data_5` se imprime en la consola.
+
+```{r}
+data_5 $`Columna-A, Fila1` <-data_excel2 $A[1] 
+data_5 $`Columna-A, Fila2` <-data_excel2 $A[2] 
+data_5 $`Columna-A, Fila3` <-data_excel2 $A[3]
+data_5
+```
+
+## Operaciones entre columnas
+Realizando operación y guardando resultado en la nueva columna resutado
+
+Se realiza operación matemática (math.operation) en columnas específicas del marco de datos data_asig6 en R. La función map() se usa para iterar sobre las filas del marco de datos y realizar la operación en cada fila. El resultado se almacena en un nuevo vector llamado operación.
+```{r}
+data_asig6 <- data_5
+
+df <- data_asig6
+operation <- map(1:nrow(df), function(x){
+  math.operation <- (df[x,2] * df[x,3]) + (df[x,4] * df[x,5]) + (df[x,6] * df[x,7])
+  math.round <- round(math.operation,2)
+  return(math.round)
+})
+```
+## Columna nueva 
+Función do.call() en combinación con rbind() para combinar las filas del vector de operación en un solo marco de datos. 
+La función data.frame() se usa luego para convertir las filas combinadas en un marco de datos. 
+La función colnames() se usa para asignar el nombre de columna "Resultado" al marco de datos resultante, y el marco de datos modificado se imprime en la consola.
+
+```{r}
+operation <- operation %>% do.call(rbind,.) %>% data.frame()
+colnames(operation) <- "Resultado"
+operation
+data_asig6 <- data_asig6 %>% mutate(operation,.after="planta")
+data_asig6 %>% datatable()
+```
+
+## Guardando datos en archivo xlsx
+
+La función write.xlsx() del paquete xlsx en R para escribir un marco de datos en un archivo de Excel. La función toma tres argumentos: el marco de datos que se escribirá, la ruta del archivo en el que se escribirá y el nombre de la hoja en la que se escribirá (opcional).
+
+```{r}
+write.xlsx(data_asig6, "C:/Users/itzi2/Documents/ejemplos/Ejemplos practicos R/Asignacion5.xlsx", sheetName = "resultado_A")
+```

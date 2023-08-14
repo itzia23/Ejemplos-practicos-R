@@ -4,12 +4,13 @@ output: html_document
 date: "2023-08-10"
 ---
 
-
 ```{r, message=FALSE}
 library(stringr)
 library(readxl)
 library(DT)
 library(ggplot2)
+
+library(tidyr)
 ```
 
 ```{r, message=FALSE}
@@ -21,7 +22,7 @@ tabla
 tabla  %>% datatable (tabla)
 ```
 
-## Eliminar espación vacios 
+## Eliminar espación vacios
 
 ```{r, message=FALSE}
 datos_sin_vacios <- tabla[complete.cases(tabla), ]
@@ -40,7 +41,8 @@ Eliminar números de los datos. La función gsub("\\d\|-", "", datos\[\[nombre_c
 datos_sin_vacios[[nombre_columna]] <- gsub("\\d|-", "", datos_sin_vacios [[nombre_columna]])
 datos_sin_vacios 
 ```
-## Identificación de celdas null 
+
+## Identificación de celdas null
 
 En este código, el paquete readxl se carga usando library(). Luego, el archivo de Excel se lee en R usando la función read_excel(). Las filas con valores nulos se identifican usando la función apply() y la función is.na().
 
@@ -49,18 +51,18 @@ En este código, el paquete readxl se carga usando library(). Luego, el archivo 
 filas_nulas <- which(apply(is.na(datos_sin_vacios), 1, any))
 filas_nulas
 ```
+
 ## Identificación de celdas ceros
 
 Las filas con valores cero se identifican usando la función apply() y la comparación datos_excel == 0. Las filas identificadas se almacenan en las variables filas_nulas y filas_cero.
-
-
 
 ```{r, message=FALSE}
 # Identificar las filas con valores cero
 filas_cero <- which(apply(datos_sin_vacios == 0, 1, any))
 filas_cero
 ```
-## Variables de columnas a minúscula 
+
+## Variables de columnas a minúscula
 
 En este código, el paquete readxl se carga usando library(). Luego, el archivo de Excel se lee en R usando la función read_excel(). Los nombres de las columnas se convierten a minúsculas usando la función tolower(). Los nuevos nombres de las columnas se aplican al objeto datos_excel usando la función colnames(). Finalmente, el archivo de Excel con los nuevos nombres de las columnas se guarda usando la función write.xlsx().
 
@@ -70,7 +72,7 @@ colnames(datos_sin_vacios) <- tolower(colnames(datos_sin_vacios))
 datos_sin_vacios
 ```
 
-## Texto en primera letra mayúscula y las demas siguiente en minuscula 
+## Texto en primera letra mayúscula y las demas siguiente en minuscula
 
 En este código, el paquete R.utils se carga mediante library(R.utils). Un vector de caracteres nombre_columna se crea con dos elementos. La función capitalize() se usa para poner en mayúscula la primera letra de cada palabra en nombre_columna
 
@@ -96,8 +98,8 @@ datos_sin_vacios
 ```
 
 ## Variables Categoricas
-Variables Categoricas la función sapply() para verificar el tipo de datos de cada columna. La función is.numeric se utiliza para verificar si una columna tiene el tipo de datos "numeric" con el signo ! le indicamos que nos muestre los q no son numéricos. Las columnas que no contienen números se almacenan en la variable columnas_categoricas.
 
+Variables Categoricas la función sapply() para verificar el tipo de datos de cada columna. La función is.numeric se utiliza para verificar si una columna tiene el tipo de datos "numeric" con el signo ! le indicamos que nos muestre los q no son numéricos. Las columnas que no contienen números se almacenan en la variable columnas_categoricas.
 
 ```{r, message=FALSE}
 columnas_categoricas <- sapply(datos_sin_vacios, function(col) all(!is.numeric(col)))
@@ -125,16 +127,21 @@ datos_numericos
 
 ## Elinimar columnas de %
 
-En este código, el paquete readxl se carga utilizando library().
-Luego, el archivo de Excel se lee en R utilizando la función read_excel().
-La función de indexación se utiliza para seleccionar todas las columnas excepto la que se desea eliminar. La columna a eliminar se especifica utilizando la función %in%.
+En este código, el paquete readxl se carga utilizando library(). Luego, el archivo de Excel se lee en R utilizando la función read_excel(). La función de indexación se utiliza para seleccionar todas las columnas excepto la que se desea eliminar. La columna a eliminar se especifica utilizando la función %in%.
+
 ```{r, message=FALSE}
 datos_sin_vacios <- datos_sin_vacios[, !colnames(datos_sin_vacios) %in% "%ci"]
 datos_sin_vacios
 ```
+
 ```{r, message=FALSE}
 datos_sin_vacios <- datos_sin_vacios[, !colnames(datos_sin_vacios) %in% "%gb"]
 datatable(datos_sin_vacios)
 ```
 
+
+```{r}
+datos_sin_vacios <- gather(datos_sin_vacios, key="tipo", value="planta")
+datos_sin_vacios
+```
 

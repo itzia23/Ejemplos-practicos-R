@@ -1,8 +1,6 @@
+##[Asignación 5 Operaciones en columnas A](./Asignación5_operacion.qmd)
 
-
-
-## [Limpieza de datos Asignación 4](./Limpieza de datos.qmd)
-
+## [Limpieza de datos Asignación 4](./Limpieza%20de%20datos.qmd)
 
 ## Ejemplo 8
 
