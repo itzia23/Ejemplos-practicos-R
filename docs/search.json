@@ -264,5 +264,54 @@
     "title": "Ejemplos practicos R",
     "section": "Limpieza de datos Asignación 4",
     "text": "Limpieza de datos Asignación 4"
+  },
+  {
+    "objectID": "index.html#asignación-5-operaciones-en-columnas-a",
+    "href": "index.html#asignación-5-operaciones-en-columnas-a",
+    "title": "Ejemplos practicos R",
+    "section": "Asignación 5 Operaciones en columnas A",
+    "text": "Asignación 5 Operaciones en columnas A"
+  },
+  {
+    "objectID": "Asignación5_columnaB.html",
+    "href": "Asignación5_columnaB.html",
+    "title": "Asignación5_operaciónColumnaB",
+    "section": "",
+    "text": "library(dplyr)\nlibrary(tidyverse)\nlibrary(openxlsx)\nlibrary(readxl)\nlibrary(DT)\nlibrary(dplyr)\n# Leer el primer archivo Excel data1\ndata_excel2 &lt;- read_xlsx(\"C:/Users/itzi2/Documents/ejemplos/Ejemplos practicos R/data1.xlsx\")"
+  },
+  {
+    "objectID": "Asignación5_columnaB.html#insertar-multiples-columnas-con-ubicación-especifica",
+    "href": "Asignación5_columnaB.html#insertar-multiples-columnas-con-ubicación-especifica",
+    "title": "Asignación5_operaciónColumnaB",
+    "section": "Insertar multiples columnas con ubicación especifica",
+    "text": "Insertar multiples columnas con ubicación especifica\nLa función mutate() del paquete dplyr se usa para agregar tres nuevas columnas al marco de datos excel5. El argumento .after se usa para especificar la posición de las nuevas columnas en relación con las columnas existentes. Los nombres de las columnas están entre comillas graves (`) para manejar caracteres especiales.\n\nexcel5 &lt;- data_excel2\nexcel5 &lt;- excel5 %&gt;% mutate(\"Columna-B, Fila1\" = NA, .after =\"instalada\") %&gt;% mutate(\"Columna-B, Fila2\" = NA, .after= \"generacion\") %&gt;% mutate(\"Columna-B, Fila3\" = NA, .after = \"firme\")\nexcel5\n\n# A tibble: 3 × 7\n  planta        instalada `Columna-B, Fila1` generacion `Columna-B, Fila2` firme\n  &lt;chr&gt;             &lt;dbl&gt; &lt;lgl&gt;                   &lt;dbl&gt; &lt;lgl&gt;              &lt;dbl&gt;\n1 AES Panama         482. NA                      1523. NA                  307.\n2 AES GAS            381  NA                      1376  NA                  350.\n3 ENEL  FORTUNA      300  NA                      1383. NA                  289.\n# ℹ 1 more variable: `Columna-B, Fila3` &lt;lgl&gt;\n\n\nLectura de archivo data2, contiene el puntaje de Celdad A y B\n\ndatos_5 &lt;- excel5\n\n# Leer el segundo archivo Excel\ndatosexcel2 &lt;- read_excel(\"C:/Users/itzi2/Documents/ejemplos/Ejemplos practicos R/data2.xlsx\")"
+  },
+  {
+    "objectID": "Asignación5_columnaB.html#insertar-valores",
+    "href": "Asignación5_columnaB.html#insertar-valores",
+    "title": "Asignación5_operaciónColumnaB",
+    "section": "Insertar valores",
+    "text": "Insertar valores\nArchivo data2 a las columnas Columna-B, Fila1, fila2, fila3 El operador $ se utiliza para asignar el valor de la primera, segunda y tercera celdas de la columna A del marco de datos datosexcel2 a las celdas del marco de datos data_5 con nombres específicos. Los acentos graves (’) se utilizan para manejar caracteres especiales en los nombres de las columnas. Finalmente, el marco de datos datos_5` se imprime en la consola.\n\ndatos_5 $`Columna-B, Fila1` &lt;-datosexcel2 $B[1] \ndatos_5 $`Columna-B, Fila2` &lt;-datosexcel2 $B[2] \ndatos_5 $`Columna-B, Fila3` &lt;-datosexcel2 $B[3]\ndatos_5\n\n# A tibble: 3 × 7\n  planta        instalada `Columna-B, Fila1` generacion `Columna-B, Fila2` firme\n  &lt;chr&gt;             &lt;dbl&gt;              &lt;dbl&gt;      &lt;dbl&gt;              &lt;dbl&gt; &lt;dbl&gt;\n1 AES Panama         482.                 15      1523.                 20  307.\n2 AES GAS            381                  15      1376                  20  350.\n3 ENEL  FORTUNA      300                  15      1383.                 20  289.\n# ℹ 1 more variable: `Columna-B, Fila3` &lt;dbl&gt;"
+  },
+  {
+    "objectID": "Asignación5_columnaB.html#operaciones-entre-columnas",
+    "href": "Asignación5_columnaB.html#operaciones-entre-columnas",
+    "title": "Asignación5_operaciónColumnaB",
+    "section": "Operaciones entre columnas",
+    "text": "Operaciones entre columnas\nRealizando operación y guardando resultado en la nueva columna resutado\nSe realiza operación matemática (math.operation) en columnas específicas del marco de datos datos_asig6 en R. La función map() se usa para iterar sobre las filas del marco de datos y realizar la operación en cada fila. El resultado se almacena en un nuevo vector llamado operación.\n\ndatos_asig6 &lt;- datos_5\n\ndf &lt;- datos_asig6\noperation &lt;- map(1:nrow(df), function(x){\n  math.operation &lt;- (df[x,2] * df[x,3]) + (df[x,4] * df[x,5]) + (df[x,6] * df[x,7])\n  math.round &lt;- round(math.operation,2)\n  return(math.round)\n})"
+  },
+  {
+    "objectID": "Asignación5_columnaB.html#columna-nueva",
+    "href": "Asignación5_columnaB.html#columna-nueva",
+    "title": "Asignación5_operaciónColumnaB",
+    "section": "Columna nueva",
+    "text": "Columna nueva\nFunción do.call() en combinación con rbind() para combinar las filas del vector de operación en un solo marco de datos. La función data.frame() se usa luego para convertir las filas combinadas en un marco de datos. La función colnames() se usa para asignar el nombre de columna “Resultado” al marco de datos resultante, y el marco de datos modificado se imprime en la consola.\n\noperation &lt;- operation %&gt;% do.call(rbind,.) %&gt;% data.frame()\ncolnames(operation) &lt;- \"Resultado\"\noperation\n\n  Resultado\n1   53017.9\n2   50729.5\n3   46637.9\n\ndatos_asig6 &lt;- datos_asig6 %&gt;% mutate(operation,.after=\"planta\")\ndatos_asig6 %&gt;% datatable()"
+  },
+  {
+    "objectID": "Asignación5_columnaB.html#guardando-datos-en-archivo-xlsx",
+    "href": "Asignación5_columnaB.html#guardando-datos-en-archivo-xlsx",
+    "title": "Asignación5_operaciónColumnaB",
+    "section": "Guardando datos en archivo xlsx",
+    "text": "Guardando datos en archivo xlsx\nLa función write.xlsx() del paquete xlsx en R para escribir un marco de datos en un archivo de Excel. La función toma tres argumentos: el marco de datos que se escribirá, la ruta del archivo en el que se escribirá y el nombre de la hoja en la que se escribirá (opcional).\n\nwrite.xlsx(datos_asig6, \"C:/Users/itzi2/Documents/ejemplos/Ejemplos practicos R/Asignación5_columna B.xlsx\", sheetName = \"Columna B\")"
   }
 ]

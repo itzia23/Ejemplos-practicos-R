@@ -1,3 +1,5 @@
+## [Asignación 5 Operaciones en columna B](./Asignación5_columnaB)
+
 ## [Asignación 5 Operaciones en columnas A](./Asignación5_operacion.qmd)
 
 ## [Limpieza de datos Asignación 4](./Limpieza%20de%20datos.qmd)

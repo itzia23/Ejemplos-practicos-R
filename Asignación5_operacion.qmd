@@ -19,9 +19,8 @@ data_excel1 <- read_xlsx("C:/Users/itzi2/Documents/ejemplos/Ejemplos practicos R
 ```
 
 ## Insertar multiples columnas con ubicación especifica
-La función mutate() del paquete dplyr se usa para agregar tres nuevas columnas al marco de datos datos_excel5. 
-El argumento .after se usa para especificar la posición de las nuevas columnas en relación con las columnas existentes. 
-Los nombres de las columnas están entre comillas graves (`) para manejar caracteres especiales.
+
+La función mutate() del paquete dplyr se usa para agregar tres nuevas columnas al marco de datos datos_excel5. El argumento .after se usa para especificar la posición de las nuevas columnas en relación con las columnas existentes. Los nombres de las columnas están entre comillas graves (\`) para manejar caracteres especiales.
 
 ```{r}
 datos_excel5 <- data_excel1
@@ -38,11 +37,9 @@ data_5 <- datos_excel5
 data_excel2 <- read_excel("C:/Users/itzi2/Documents/ejemplos/Ejemplos practicos R/data2.xlsx")
 ```
 
-## Insertar valores 
-Archivo data2 a las columnas Columna-A, Fila1, fila2, fila3 
-El operador $ se utiliza para asignar el valor de la primera, segunda y tercera celdas de la columna A del marco de datos data_excel2 a las celdas del marco de datos data_5 con nombres específicos.
-Los acentos graves (') se utilizan para manejar caracteres especiales en los nombres de las columnas.
-Finalmente, el marco de datos data_5` se imprime en la consola.
+## Insertar valores
+
+Archivo data2 a las columnas Columna-A, Fila1, fila2, fila3 El operador \$ se utiliza para asignar el valor de la primera, segunda y tercera celdas de la columna A del marco de datos data_excel2 a las celdas del marco de datos data_5 con nombres específicos. Los acentos graves (') se utilizan para manejar caracteres especiales en los nombres de las columnas. Finalmente, el marco de datos data_5\` se imprime en la consola.
 
 ```{r}
 data_5 $`Columna-A, Fila1` <-data_excel2 $A[1] 
@@ -52,9 +49,11 @@ data_5
 ```
 
 ## Operaciones entre columnas
+
 Realizando operación y guardando resultado en la nueva columna resutado
 
 Se realiza operación matemática (math.operation) en columnas específicas del marco de datos data_asig6 en R. La función map() se usa para iterar sobre las filas del marco de datos y realizar la operación en cada fila. El resultado se almacena en un nuevo vector llamado operación.
+
 ```{r}
 data_asig6 <- data_5
 
@@ -65,10 +64,10 @@ operation <- map(1:nrow(df), function(x){
   return(math.round)
 })
 ```
-## Columna nueva 
-Función do.call() en combinación con rbind() para combinar las filas del vector de operación en un solo marco de datos. 
-La función data.frame() se usa luego para convertir las filas combinadas en un marco de datos. 
-La función colnames() se usa para asignar el nombre de columna "Resultado" al marco de datos resultante, y el marco de datos modificado se imprime en la consola.
+
+## Columna nueva
+
+Función do.call() en combinación con rbind() para combinar las filas del vector de operación en un solo marco de datos. La función data.frame() se usa luego para convertir las filas combinadas en un marco de datos. La función colnames() se usa para asignar el nombre de columna "Resultado" al marco de datos resultante, y el marco de datos modificado se imprime en la consola.
 
 ```{r}
 operation <- operation %>% do.call(rbind,.) %>% data.frame()
