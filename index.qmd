@@ -1,3 +1,48 @@
+## EJEMPLO 9
+
+## Ordenando columnas, según director que ha hecho la película más larga y peliculas repetidas
+
+```{r, message=FALSE}
+
+library(dplyr)
+library (base)
+library(readxl)
+library(openxlsx)
+library(DT)
+
+
+# Leer el archivo de Excel
+datos_excel3 <- read.csv("C:/Users/itzi2/Documents/ejemplos/Ejemplos practicos R/imdb2006-2016.csv")
+df<- data.frame(datos_excel3)
+```
+
+Guardando archivo csv a .xlsx con el nombre Asignacion6
+
+```{r, message=FALSE}
+write.xlsx(df,"C:/Users/itzi2/Documents/ejemplos/Ejemplos practicos R/Asignacion6.xlsx", sheetName = "datos")
+```
+
+lectura del archivo .xlsx con el nombre Asignacion6
+
+```{r, message=FALSE}
+datos_excel4 <- read_xlsx("C:/Users/itzi2/Documents/ejemplos/Ejemplos practicos R/Asignacion6.xlsx")
+
+```
+
+Película duplicada arrange(-n), para ordenar de mayor a menor los valores de count() count() para contar el número de veces que aparece cada título en el data frame datos_excel4.
+
+```{r, message=FALSE}
+peli_dupli<- datos_excel4 %>% count(Title) %>% arrange(-n)
+datatable (peli_dupli)
+```
+
+arrange() ordenar el data frame datos_excel4 por la columna Runtime_Minutes. slice(1:50) selecciona las 50 primeras filas y select() se usa para extraer solo las columnas "Director" y "Runtime_Minutes" de los datos_seleccionados.
+
+```{r}
+datos_excel4 %>%  arrange(desc(Runtime..Minutes.)) %>% slice(1:50) %>% select(Director,Runtime..Minutes.)
+datatable(datos_excel4)
+```
+
 ## [Asignación 5 Operaciones en columna B](./Asignación5_columnaB)
 
 ## [Asignación 5 Operaciones en columnas A](./Asignación5_operacion.qmd)
