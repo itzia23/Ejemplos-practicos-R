@@ -1,3 +1,32 @@
+## EJEMPLO 10
+
+## Filtrado de Columnas 
+```{r, message=FALSE}
+ 
+library(dplyr)
+library(readxl)
+library(DT)
+```
+
+```{r, message=FALSE}
+datos_excel5 <- read_xlsx("C:/Users/itzi2/Documents/ejemplos/Ejemplos practicos R/Asignacion6.xlsx")
+```
+
+se filtran los datos con la función filter() idicandole que de la columna Year seleccione los datos 2016, odendando con la funcion arrange(), slice() seleccionanado los 20 primeros y selec() para extraer los titulos y mayores ingresos
+```{r}
+# película que obtuvo los mayores ingresos en 2016
+ datos_excel6<- datos_excel5 %>% 
+  filter(Year == 2016) %>% 
+  arrange(desc(Revenue..Millions.)) %>% 
+  slice(1:20) %>% 
+  select(Title, Revenue..Millions.)
+datatable(datos_excel6)
+```
+
+
+
+
+
 ## EJEMPLO 9
 
 ## Ordenando columnas, según director que ha hecho la película más larga y peliculas repetidas

@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "Ejemplos practicos R",
     "section": "",
-    "text": "##Asignación 5 Operaciones en columnas A"
+    "text": "library(dplyr)\nlibrary(readxl)\nlibrary(DT)\n\n\ndatos_excel5 &lt;- read_xlsx(\"C:/Users/itzi2/Documents/ejemplos/Ejemplos practicos R/Asignacion6.xlsx\")\n\nse filtran los datos con la función filter() idicandole que de la columna Year seleccione los datos 2016, odendando con la funcion arrange() seleccionanado los 20 primeros y selec() para extraer los titulos y mayores ingresos\n\n# película que obtuvo los mayores ingresos en 2016\n datos_excel6&lt;- datos_excel5 %&gt;% \n  filter(Year == 2016) %&gt;% \n  arrange(desc(Revenue..Millions.)) %&gt;% \n  slice(1:20) %&gt;% \n  select(Title, Revenue..Millions.)\ndatatable(datos_excel6)"
   },
   {
     "objectID": "index.html#ejemplo-4",
@@ -319,7 +319,7 @@
     "href": "index.html#ordenando-columnas-según-director-que-ha-hecho-la-película-más-larga-y-peliculas-repetidas",
     "title": "Ejemplos practicos R",
     "section": "Ordenando columnas, según director que ha hecho la película más larga y peliculas repetidas",
-    "text": "Ordenando columnas, según director que ha hecho la película más larga y peliculas repetidas\n\nlibrary(dplyr)\nlibrary (base)\nlibrary(readxl)\nlibrary(openxlsx)\nlibrary(DT)\n\n\n# Leer el archivo de Excel\ndatos_excel3 &lt;- read.csv(\"C:/Users/itzi2/Documents/ejemplos/Ejemplos practicos R/imdb2006-2016.csv\")\ndf&lt;- data.frame(datos_excel3)\n\nGuardando archivo csv a .xlsx con el nombre Asignacion6\n\nwrite.xlsx(df,\"C:/Users/itzi2/Documents/ejemplos/Ejemplos practicos R/Asignacion6.xlsx\", sheetName = \"datos\")\n\nlectura del archivo .xlsx con el nombre Asignacion6\n\ndatos_excel4 &lt;- read_xlsx(\"C:/Users/itzi2/Documents/ejemplos/Ejemplos practicos R/Asignacion6.xlsx\")\n\nPelícula duplicada arrange(-n), para ordenar de mayor a menor los valores de count() count() para contar el número de veces que aparece cada título en el data frame datos_excel4.\n\npeli_dupli&lt;- datos_excel4 %&gt;% count(Title) %&gt;% arrange(-n)\ndatatable (peli_dupli)\n\n\n\n\n\n\narrange() ordenar el data frame datos_excel4 por la columna Runtime_Minutes. slice(1:50) selecciona las 50 primeras filas y select() se usa para extraer solo las columnas “Director” y “Runtime_Minutes” de los datos_seleccionados.\n\ndatos_excel4 %&gt;%  arrange(desc(Runtime..Minutes.)) %&gt;% slice(1:50) %&gt;% select(Director,Runtime..Minutes.)\n\n# A tibble: 50 × 2\n   Director            Runtime..Minutes.\n   &lt;chr&gt;                           &lt;dbl&gt;\n 1 Robert Rodriguez                  191\n 2 Quentin Tarantino                 187\n 3 Martin Scorsese                   180\n 4 Abdellatif Kechiche               180\n 5 David Lynch                       180\n 6 Tom Tykwer                        172\n 7 Rajkumar Hirani                   170\n 8 Christopher Nolan                 169\n 9 Gore Verbinski                    169\n10 Peter Jackson                     169\n# ℹ 40 more rows\n\ndatatable(datos_excel4)"
+    "text": "Ordenando columnas, según director que ha hecho la película más larga y peliculas repetidas\n\nlibrary(dplyr)\nlibrary (base)\nlibrary(readxl)\nlibrary(openxlsx)\nlibrary(DT)\n\n\n# Leer el archivo de Excel\ndatos_excel3 &lt;- read.csv(\"C:/Users/itzi2/Documents/ejemplos/Ejemplos practicos R/imdb2006-2016.csv\")\ndf&lt;- data.frame(datos_excel3)\n\nGuardando archivo csv a .xlsx con el nombre Asignacion6\n\nwrite.xlsx(df,\"C:/Users/itzi2/Documents/ejemplos/Ejemplos practicos R/Asignacion6.xlsx\", sheetName = \"datos\")\n\nWarning in file.create(to[okay]): cannot create file\n'C:/Users/itzi2/Documents/ejemplos/Ejemplos practicos R/Asignacion6.xlsx',\nreason 'Permission denied'\n\n\nlectura del archivo .xlsx con el nombre Asignacion6\n\ndatos_excel4 &lt;- read_xlsx(\"C:/Users/itzi2/Documents/ejemplos/Ejemplos practicos R/Asignacion6.xlsx\")\n\nPelícula duplicada arrange(-n), para ordenar de mayor a menor los valores de count() count() para contar el número de veces que aparece cada título en el data frame datos_excel4.\n\npeli_dupli&lt;- datos_excel4 %&gt;% count(Title) %&gt;% arrange(-n)\ndatatable (peli_dupli)\n\n\n\n\n\n\narrange() ordenar el data frame datos_excel4 por la columna Runtime_Minutes. slice(1:50) selecciona las 50 primeras filas y select() se usa para extraer solo las columnas “Director” y “Runtime_Minutes” de los datos_seleccionados.\n\ndatos_excel4 %&gt;%  arrange(desc(Runtime..Minutes.)) %&gt;% slice(1:50) %&gt;% select(Director,Runtime..Minutes.)\n\n# A tibble: 50 × 2\n   Director            Runtime..Minutes.\n   &lt;chr&gt;                           &lt;dbl&gt;\n 1 Robert Rodriguez                  191\n 2 Quentin Tarantino                 187\n 3 Martin Scorsese                   180\n 4 Abdellatif Kechiche               180\n 5 David Lynch                       180\n 6 Tom Tykwer                        172\n 7 Rajkumar Hirani                   170\n 8 Christopher Nolan                 169\n 9 Gore Verbinski                    169\n10 Peter Jackson                     169\n# ℹ 40 more rows\n\ndatatable(datos_excel4)"
   },
   {
     "objectID": "index.html#asignación-5-operaciones-en-columna-b",
@@ -327,5 +327,26 @@
     "title": "Ejemplos practicos R",
     "section": "Asignación 5 Operaciones en columna B",
     "text": "Asignación 5 Operaciones en columna B"
+  },
+  {
+    "objectID": "index.html#ejemplo-10",
+    "href": "index.html#ejemplo-10",
+    "title": "Ejemplos practicos R",
+    "section": "",
+    "text": "library(dplyr)\nlibrary(readxl)\nlibrary(DT)\n\n\ndatos_excel5 &lt;- read_xlsx(\"C:/Users/itzi2/Documents/ejemplos/Ejemplos practicos R/Asignacion6.xlsx\")\n\nse filtran los datos con la función filter() idicandole que de la columna Year seleccione los datos 2016, odendando con la funcion arrange() seleccionanado los 20 primeros y selec() para extraer los titulos y mayores ingresos\n\n# película que obtuvo los mayores ingresos en 2016\n datos_excel6&lt;- datos_excel5 %&gt;% \n  filter(Year == 2016) %&gt;% \n  arrange(desc(Revenue..Millions.)) %&gt;% \n  slice(1:20) %&gt;% \n  select(Title, Revenue..Millions.)\ndatatable(datos_excel6)"
+  },
+  {
+    "objectID": "index.html#ejemplo-9",
+    "href": "index.html#ejemplo-9",
+    "title": "Ejemplos practicos R",
+    "section": "EJEMPLO 9",
+    "text": "EJEMPLO 9"
+  },
+  {
+    "objectID": "index.html#filtrado-de-columnas",
+    "href": "index.html#filtrado-de-columnas",
+    "title": "Ejemplos practicos R",
+    "section": "Filtrado de Columnas",
+    "text": "Filtrado de Columnas\n\nlibrary(dplyr)\nlibrary(readxl)\nlibrary(DT)\n\n\ndatos_excel5 &lt;- read_xlsx(\"C:/Users/itzi2/Documents/ejemplos/Ejemplos practicos R/Asignacion6.xlsx\")\n\nse filtran los datos con la función filter() idicandole que de la columna Year seleccione los datos 2016, odendando con la funcion arrange(), slice() seleccionanado los 20 primeros y selec() para extraer los titulos y mayores ingresos\n\n# película que obtuvo los mayores ingresos en 2016\n datos_excel6&lt;- datos_excel5 %&gt;% \n  filter(Year == 2016) %&gt;% \n  arrange(desc(Revenue..Millions.)) %&gt;% \n  slice(1:20) %&gt;% \n  select(Title, Revenue..Millions.)\ndatatable(datos_excel6)"
   }
 ]
